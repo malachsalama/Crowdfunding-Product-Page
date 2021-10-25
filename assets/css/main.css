@@ -1,0 +1,143 @@
+:root {
+  --moderate-cyan: hsl(176, 50%, 47%);
+  --dark-cyan: hsl(176, 72%, 28%);
+  --black: hsl(0, 0%, 0%);
+  --dark-gray: hsl(0, 0%, 48%);
+  --dark-gray-light: hsla(0, 0%, 48%, 0.15);
+  --background: rgb(250, 250, 255);
+  --white: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: var(--background);
+  font-family: "Commissioner", sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  padding: 2rem 1.6rem;
+}
+.header .nav {
+  display: flex;
+  align-items: center;
+}
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.header .nav--links {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header ul li {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.header .nav--item {
+  margin-left: 2rem;
+}
+
+.header-hero {
+  position: absolute;
+  top: 0;
+  z-index: -6;
+}
+
+.main {
+  position: absolute;
+  width: 55%;
+  transform: translateX(-50%);
+  left: 50%;
+  max-width: 40rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  position: relative;
+  top: 30vh;
+  text-align: center;
+  z-index: 2;
+  margin: 0 auto 1.5rem auto;
+}
+.card .mastercraft-card-img {
+  position: absolute;
+  top: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card .mastercraft-card-content h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.card .mastercraft-card-content p {
+  color: var(--dark-gray);
+  font-size: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.card .mastercraft-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .primary-btn {
+  background-color: var(--moderate-cyan);
+  color: var(--white);
+  border: none;
+  border-radius: 2rem;
+  outline: none;
+  padding: 1rem 2rem;
+}
+.card .primary-btn:hover {
+  background-color: var(--dark-cyan);
+}
+.card .bookmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  padding: 0;
+  width: auto;
+  border-radius: 2rem;
+}
+.card .bookmark .bookmark-icon {
+  height: 50px;
+  width: 50px;
+}
+.card .bookmark .bookmark-text {
+  display: inline;
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
