@@ -41,7 +41,7 @@ li {
   justify-content: space-between;
   align-items: center;
   color: var(--white);
-  padding: 2rem 1.6rem;
+  padding: 3.2rem 10.4rem;
 }
 .header .nav {
   display: flex;
@@ -83,7 +83,7 @@ li {
   box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.1);
   padding: 3rem 2rem;
   position: relative;
-  top: 30vh;
+  top: 25vh;
   text-align: center;
   z-index: 2;
   margin: 0 auto 1.5rem auto;
