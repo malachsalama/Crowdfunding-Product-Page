@@ -13,168 +13,170 @@
     <title>Frontend Mentor | Crowdfunding Product Page</title>
   </head>
   <body>
-    <div class="overlay overlay__modal"></div>
-    <div class="wrapper">
-      <header class="header">
-        <a href="#" class="logo"
-          ><img src="/assets/images/logo.svg" alt="crowdfund logo"
-        /></a>
-        <nav class="nav">
-          <ul class="nav--links">
-            <li class="nav--item"><a href="#">About</a></li>
-            <li class="nav--item"><a href="#">Discover</a></li>
-            <li class="nav--item"><a href="#">Get Started</a></li>
-          </ul>
-        </nav>
-      </header>
-      <section class="header-hero">
-        <picture>
-          <source
-            media="(min-width: 468px)"
-            srcset="/assets/images/image-hero-desktop.jpg"
-          />
-          <img src="/assets/images/image-hero-mobile.jpg" alt="" />
-        </picture>
-      </section>
+    <div class="overlay hidden"></div>
+    <header class="header">
+      <a href="#" class="logo"
+        ><img src="/assets/images/logo.svg" alt="crowdfund logo"
+      /></a>
+      <nav class="nav">
+        <ul class="nav--links">
+          <li class="nav--item"><a href="#">About</a></li>
+          <li class="nav--item"><a href="#">Discover</a></li>
+          <li class="nav--item"><a href="#">Get Started</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="header__hero">
+      <picture>
+        <source
+          media="(min-width: 468px)"
+          srcset="/assets/images/image-hero-desktop.jpg"
+        />
+        <img src="/assets/images/image-hero-mobile.jpg" alt="" />
+      </picture>
+    </section>
 
-      <!-- Banners -->
-      <section class="main">
-        <div class="card">
-          <img
-            class="mastercraft-card-img"
-            src="/assets/images/logo-mastercraft.svg"
-            alt="mastercraft logo"
-          />
-          <div class="mastercraft-card-content">
-            <h1>Mastercraft Bamboo Monitor Riser</h1>
-            <p>
-              A beautiful & handcrafted monitor stand to reduce neck and eye
-              strain
-            </p>
+    <!-- Banners -->
+    <section class="main">
+      <div class="card">
+        <img
+          class="mastercraft__card__img"
+          src="/assets/images/logo-mastercraft.svg"
+          alt="mastercraft logo"
+        />
+        <div class="mastercraft__card__content">
+          <h1>Mastercraft Bamboo Monitor Riser</h1>
+          <p>
+            A beautiful & handcrafted monitor stand to reduce neck and eye
+            strain
+          </p>
+        </div>
+        <div class="mastercraft__btns">
+          <button class="primary__btn btn--show-modal">
+            Back this project
+          </button>
+          <button class="bookmark">
+            <img
+              class="bookmark__icon"
+              src="/assets/images/icon-bookmark.svg"
+              alt="bookmark-icon"
+            />
+            <span class="bookmark__text">Bookmark</span>
+          </button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            <h3 class="stat__record">$89,914</h3>
+            <span class="stat__desc">of $100,000 backed</span>
           </div>
-          <div class="mastercraft-btns">
-            <button class="primary-btn">Back this project</button>
-            <button class="bookmark">
-              <img
-                class="bookmark-icon"
-                src="/assets/images/icon-bookmark.svg"
-                alt="bookmark-icon"
-              />
-              <span class="bookmark-text">Bookmark</span>
-            </button>
+          <div class="stat">
+            <h3 class="stat__record">5,007</h3>
+            <p class="stat__desc">total backers</p>
+          </div>
+          <div class="stat">
+            <h3 class="stat__record">56</h3>
+            <p class="stat__desc">days left</p>
           </div>
         </div>
-        <div class="card">
-          <div class="stats">
-            <div class="stat">
-              <h3 class="stat__record">$89,914</h3>
-              <span class="stat__desc">of $100,000 backed</span>
-            </div>
-            <div class="stat">
-              <h3 class="stat__record">5,007</h3>
-              <p class="stat__desc">total backers</p>
-            </div>
-            <div class="stat">
-              <h3 class="stat__record">56</h3>
-              <p class="stat__desc">days left</p>
-            </div>
-          </div>
-          <div class="progress">
-            <div id="stats__progress" class="progress__bar"></div>
-          </div>
+        <div class="progress">
+          <div id="stats__progress" class="progress__bar"></div>
         </div>
-        <div class="card">
-          <div class="about__card__texts">
-            <h2>About this project</h2>
-            <p class="about__text">
-              The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
-              platform that elevates your screen to a more comfortable viewing
-              height. Placing your monitor at eye level has the potential to
-              improve your posture and make you more comfortable while at work,
-              helping you stay focused on the task at hand.
-            </p>
-            <p class="about__text">
-              Featuring artisan craftsmanship, the simplicity of design creates
-              extra desk space below your computer to allow notepads, pens, and
-              USB sticks to be stored under the stand.
-            </p>
+      </div>
+      <div class="card">
+        <div class="about__card__texts">
+          <h2>About this project</h2>
+          <p class="about__text">
+            The Mastercraft Bamboo Monitor Riser is a sturdy and stylish
+            platform that elevates your screen to a more comfortable viewing
+            height. Placing your monitor at eye level has the potential to
+            improve your posture and make you more comfortable while at work,
+            helping you stay focused on the task at hand.
+          </p>
+          <p class="about__text">
+            Featuring artisan craftsmanship, the simplicity of design creates
+            extra desk space below your computer to allow notepads, pens, and
+            USB sticks to be stored under the stand.
+          </p>
+        </div>
+        <div class="about__cards">
+          <div class="about__card">
+            <div class="about__card__header">
+              <h3 class="about__cards__subtitle">Bamboo stand</h3>
+              <p class="pledge">Pledge $25 or more</p>
+            </div>
+            <div class="about__card__body">
+              <p class="about__text">
+                You get an ergonomic stand made of natural bamboo. You've helped
+                us launch our promotional campaign, and you’ll be added to a
+                special Backer member list.
+              </p>
+            </div>
+            <div class="about__card__footer">
+              <div class="about__card__footer__content">
+                <p class="footer__num">101</p>
+                <p class="footer__desc">left</p>
+              </div>
+              <a href="#" class="card__btn bamboo__btn btn--show-modal"
+                >Select Reward</a
+              >
+            </div>
           </div>
-          <div class="about__cards">
-            <div class="about__card">
-              <div class="about__card__header">
-                <h3 class="about__cards__subtitle">Bamboo stand</h3>
-                <p class="pledge">Pledge $25 or more</p>
-              </div>
-              <div class="about__card__body">
-                <p class="about__text">
-                  You get an ergonomic stand made of natural bamboo. You've
-                  helped us launch our promotional campaign, and you’ll be added
-                  to a special Backer member list.
-                </p>
-              </div>
-              <div class="about__card__footer">
-                <div class="about__card__footer__content">
-                  <p class="footer__num">101</p>
-                  <p class="footer__desc">left</p>
-                </div>
-                <a href="#" class="card__btn bamboo__btn">Select Reward</a>
-              </div>
-            </div>
 
-            <div class="about__card">
-              <div class="about__card__header">
-                <h3 class="about__cards__subtitle">Black Edition Stand</h3>
-                <p class="pledge">Pledge $75 or more</p>
-              </div>
-              <div class="about__card__body">
-                <p class="about__text">
-                  You get a Black Special Edition computer stand and a personal
-                  thank you. You’ll be added to our Backer member list. Shipping
-                  is included.
-                </p>
-              </div>
-              <div class="about__card__footer">
-                <div class="about__card__footer__content">
-                  <p class="footer__num">64</p>
-                  <p class="footer__desc">left</p>
-                </div>
-                <a href="#" class="edition__btn">Select Reward</a>
-              </div>
+          <div class="about__card">
+            <div class="about__card__header">
+              <h3 class="about__cards__subtitle">Black Edition Stand</h3>
+              <p class="pledge">Pledge $75 or more</p>
             </div>
+            <div class="about__card__body">
+              <p class="about__text">
+                You get a Black Special Edition computer stand and a personal
+                thank you. You’ll be added to our Backer member list. Shipping
+                is included.
+              </p>
+            </div>
+            <div class="about__card__footer">
+              <div class="about__card__footer__content">
+                <p class="footer__num">64</p>
+                <p class="footer__desc">left</p>
+              </div>
+              <a href="#" class="edition__btn btn--show-modal">Select Reward</a>
+            </div>
+          </div>
 
-            <div class="about__card mahogany">
-              <div class="about__card__header">
-                <h3 class="about__cards__subtitle">Mahogany Special Edition</h3>
-                <p class="pledge">Pledge $1200 or more</p>
+          <div class="about__card">
+            <div class="about__card__header">
+              <h3 class="about__cards__subtitle">Mahogany Special Edition</h3>
+              <p class="pledge">Pledge $1200 or more</p>
+            </div>
+            <div class="about__card__body">
+              <p class="about__text">
+                You get two Special Edition Mahogany stands, a Backer T-Shirt,
+                and a personal thank you. You’ll be added to our Backer member
+                list. Shipping is included.
+              </p>
+            </div>
+            <div class="about__card__footer">
+              <div class="about__card__footer__content">
+                <p class="footer__num">0</p>
+                <p class="footer__desc">left</p>
               </div>
-              <div class="about__card__body">
-                <p class="about__text">
-                  You get two Special Edition Mahogany stands, a Backer T-Shirt,
-                  and a personal thank you. You’ll be added to our Backer member
-                  list. Shipping is included.
-                </p>
-              </div>
-              <div class="about__card__footer">
-                <div class="about__card__footer__content">
-                  <p class="footer__num">0</p>
-                  <p class="footer__desc">left</p>
-                </div>
-                <a href="#" class="mahogany__btn">Select Reward</a>
-              </div>
+              <a href="#" class="mahogany__btn btn--show-modal">Out of Stock</a>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- Modal Section -->
-    <section class="modal" id="modal">
+    <section class="modal hidden">
       <div class="modal__header">
         <div class="modal__header__nav">
           <h2>Back this project</h2>
           <img
             src="/assets/images/icon-close-modal.svg"
-            class="modal__header__img"
+            class="btn--close-modal"
             alt=""
           />
         </div>
@@ -183,7 +185,7 @@
           the world?
         </p>
       </div>
-      <section class="modal__cards">
+      <div class="modal__cards">
         <!-- First Modal card -->
         <div class="modal__card">
           <div class="modal__card__header">
@@ -342,7 +344,9 @@
             </p>
           </div>
         </div>
-      </section>
+      </div>
     </section>
+
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>

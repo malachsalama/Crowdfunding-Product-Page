@@ -63,7 +63,7 @@ li {
   margin-left: 2rem;
 }
 
-.header-hero {
+.header__hero {
   position: absolute;
   top: 0;
   z-index: -6;
@@ -88,27 +88,27 @@ li {
   z-index: 2;
   margin: 0 auto 2rem auto;
 }
-.card .mastercraft-card-img {
+.card .mastercraft__card__img {
   position: absolute;
   top: -1.8rem;
   left: 50%;
   transform: translateX(-50%);
 }
-.card .mastercraft-card-content h1 {
+.card .mastercraft__card__content h1 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-.card .mastercraft-card-content p {
+.card .mastercraft__card__content p {
   color: var(--dark-gray);
   font-size: 0.8rem;
   margin-bottom: 1.8rem;
 }
-.card .mastercraft-btns {
+.card .mastercraft__btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.card .primary-btn {
+.card .primary__btn {
   background-color: var(--moderate-cyan);
   color: var(--white);
   border: none;
@@ -116,7 +116,7 @@ li {
   outline: none;
   padding: 1rem 2rem;
 }
-.card .primary-btn:hover {
+.card .primary__btn:hover {
   background-color: var(--dark-cyan);
 }
 .card .bookmark {
@@ -128,11 +128,11 @@ li {
   width: auto;
   border-radius: 2rem;
 }
-.card .bookmark .bookmark-icon {
+.card .bookmark .bookmark__icon {
   height: 48px;
   width: 48px;
 }
-.card .bookmark .bookmark-text {
+.card .bookmark .bookmark__text {
   display: inline;
   position: relative;
   padding-left: 1rem;
@@ -210,6 +210,10 @@ li {
   font-size: 0.8rem;
   font-weight: 500;
 }
+.card .about__cards .about__card:last-child {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
 .card .about__cards .about__card .about__card__body {
   margin: 1.3rem 0;
 }
@@ -254,25 +258,21 @@ li {
 .card .about__cards .about__card .mahogany__btn {
   background-color: var(--dark-gray);
 }
-.card .mahogany {
-  opacity: 0.5;
-}
 
 .overlay {
-  visibility: visible;
   position: fixed;
+  background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0));
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0));
   z-index: 5;
   transition: all 0.3s;
 }
 
-.overlay__modal {
-  transition: all 0.3s;
-  z-index: 10;
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .modal {
@@ -283,7 +283,8 @@ li {
   top: 20%;
   left: 50%;
   transform: translate(-50%);
-  z-index: 20;
+  z-index: 50;
+  transition: all 0.3s;
 }
 
 .modal__header__nav {
@@ -292,7 +293,7 @@ li {
   align-items: center;
 }
 
-.modal__header__img:hover {
+.btn--close-modal:hover {
   cursor: pointer;
 }
 
