@@ -1,5 +1,6 @@
 "use strict";
 
+// Selecting elements
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
@@ -18,7 +19,7 @@ const backers = document.getElementById("backers");
 const pledgeInput = document.querySelectorAll(".modal__card__footer__input");
 const progressBar = document.querySelector(".progress__bar");
 
-// Modal window
+// Opening and closing the modal window
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -112,20 +113,20 @@ btnsRadio.forEach((btnRadio) => {
 });
 
 const goal = 100000;
-let totalBacked = parseInt(89914, 10);
-let totalBackers = parseInt(5007, 10);
+let totalBacked = parseInt(89914);
+let totalBackers = parseInt(5007);
 
 const format = function (x) {
-  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 btnsModalCard.forEach((btnModalCard) => {
   btnModalCard.addEventListener("click", function (e) {
     e.preventDefault();
 
-    let backs = parseInt(btnModalCard.previousElementSibling.value, 10);
+    let backs = parseInt(btnModalCard.previousElementSibling.value);
 
-    backedTotal.innerHTML = `${format(totalBacked + backs)}`;
+    backedTotal.innerHTML = `$${format((totalBacked += backs))}`;
     totalBackers++;
     backers.innerHTML = totalBackers;
 
