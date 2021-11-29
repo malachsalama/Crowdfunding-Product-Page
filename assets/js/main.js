@@ -8,9 +8,7 @@ const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnHamburger = document.querySelector(".menu-btn");
 const navMenu = document.querySelector(".nav--links");
 const hamburger = document.querySelector(".hamburger");
-const bookmark = document.querySelector(".bookmark");
 const modalCardFooters = document.querySelectorAll(".modal__card__footer");
-const btnsRadio = document.querySelectorAll(".modal__radio__input");
 const modalCompleted = document.querySelector(".modal-completed");
 const btnsModalCard = document.querySelectorAll(".modal__card__btn");
 const btnModalCompleted = document.querySelector(".modal-completed-btn");
@@ -29,9 +27,7 @@ const openModal = function (e) {
 const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
-  modalCardFooters[0].style = "display: none";
-  modalCardFooters[1].style = "display: none";
-  modalCardFooters[2].style = "display: none";
+  modalCardFooters.style = "display: none";
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
@@ -72,6 +68,17 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Bookmark functionality
+const bookmark = document.querySelector(".bookmark");
+const bookmarkText = document.querySelector(".bookmark__text");
+
+bookmark.addEventListener("click", () => {
+  bookmark.classList.toggle("bookmarked");
+  bookmark.classList.contains("bookmarked")
+    ? (bookmarkText.innerText = "Bookmarked")
+    : (bookmarkText.innerText = "Bookmark");
+});
+
 // Modal card footers open
 btnsOpenModal.forEach((btnOpenModal) => {
   btnOpenModal.addEventListener("click", () => {
@@ -90,6 +97,28 @@ btnsOpenModal.forEach((btnOpenModal) => {
 });
 
 // Modal card footers open from radio input
+const btnsRadio = document.querySelectorAll(".modal__radio__input");
+const modalItem = document.querySelectorAll(".modal__card");
+const modalCards = document.querySelectorAll('input[name="choice"]');
+
+function removeClass() {
+  for (const item of modalItem) {
+    btnsRadio.checked = false;
+    item.classList.remove("modal__card-checked");
+  }
+}
+
+modalItem.forEach((item) => {
+  item.addEventListener("click", () => {
+    for (const modalCard of modalCards) {
+      if (modalCard.checked) {
+        removeClass();
+        item.classList.add("modal__card-checked");
+      }
+    }
+  });
+});
+
 btnsRadio.forEach((btnRadio) => {
   btnRadio.addEventListener("click", () => {
     if (btnRadio === btnsRadio[0]) {
