@@ -10,7 +10,6 @@ const navMenu = document.querySelector(".nav--links");
 const hamburger = document.querySelector(".hamburger");
 const modalCardFooters = document.querySelectorAll(".modal__card__footer");
 const modalCompleted = document.querySelector(".modal-completed");
-const btnsModalCard = document.querySelectorAll(".modal__card__btn");
 const btnModalCompleted = document.querySelector(".modal-completed-btn");
 const backedTotal = document.getElementById("backed");
 const backers = document.getElementById("backers");
@@ -28,6 +27,7 @@ const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
   modalCardFooters.style = "display: none";
+  removeClass();
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
@@ -103,7 +103,7 @@ const modalCards = document.querySelectorAll('input[name="choice"]');
 
 function removeClass() {
   for (const item of modalItem) {
-    btnsRadio.checked = false;
+    modalItem.checked = false;
     item.classList.remove("modal__card-checked");
   }
 }
@@ -114,6 +114,7 @@ modalItem.forEach((item) => {
       if (modalCard.checked) {
         removeClass();
         item.classList.add("modal__card-checked");
+        modalCardFooters.style = "display: block";
       }
     }
   });
@@ -149,6 +150,13 @@ const format = function (x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const pledges = document.querySelectorAll(".footer__num");
+const modalPledges = document.querySelectorAll(
+  ".modal__card__header__subtext__number"
+);
+const aboutCard = document.querySelectorAll(".about__card");
+const btnsModalCard = document.querySelectorAll(".modal__card__btn");
+
 btnsModalCard.forEach((btnModalCard) => {
   btnModalCard.addEventListener("click", function (e) {
     e.preventDefault();
@@ -169,6 +177,22 @@ btnsModalCard.forEach((btnModalCard) => {
     overlay.classList.toggle("hidden");
   });
 });
+
+// Checks the available pledges, disables item if 0 pledges are available.
+function pledgeCheck() {
+  modalPledges.forEach((item, index) => {
+    if (item.innerText <= 0) {
+      modalItem[index + 1].classList.add("disabled_item");
+    }
+  });
+
+  pledges.forEach((item, index) => {
+    if (item.innerText <= 0) {
+      aboutCard[index].classList.add("disabled_item");
+    }
+  });
+}
+pledgeCheck();
 
 const closeModalComplete = function () {
   modalCompleted.style = "display: none";
