@@ -13,7 +13,6 @@ const modalCompleted = document.querySelector(".modal-completed");
 const btnModalCompleted = document.querySelector(".modal-completed-btn");
 const backedTotal = document.getElementById("backed");
 const backers = document.getElementById("backers");
-const pledgeInput = document.querySelectorAll(".modal__card__footer__input");
 const progressBar = document.querySelector(".progress__bar");
 
 // Opening and closing the modal window
@@ -26,18 +25,16 @@ const openModal = function (e) {
 const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
-  modalCardFooters.style = "display: none";
-  removeClass();
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
 
 btnCloseModal.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
+    closeModalComplete();
   }
 });
 
@@ -60,13 +57,6 @@ const closeMenu = function () {
 };
 
 btnHamburger.addEventListener("click", openMenu);
-overlay.addEventListener("click", closeMenu);
-
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape" && !navMenu.classList.contains("hidden")) {
-    closeMenu();
-  }
-});
 
 // Bookmark functionality
 const bookmark = document.querySelector(".bookmark");
@@ -79,67 +69,46 @@ bookmark.addEventListener("click", () => {
     : (bookmarkText.innerText = "Bookmark");
 });
 
-// Modal card footers open
-btnsOpenModal.forEach((btnOpenModal) => {
-  btnOpenModal.addEventListener("click", () => {
-    if (btnOpenModal === btnsOpenModal[1]) {
-      modalCardFooters[1].style = "display: block";
-      modalCardFooters[2].style = "display: none";
-    } else if (btnOpenModal === btnsOpenModal[2]) {
-      modalCardFooters[2].style = "display: block";
-      modalCardFooters[1].style = "display: none";
-    } else {
-      modalCardFooters[0].style = "display: none";
-      modalCardFooters[1].style = "display: none";
-      modalCardFooters[2].style = "display: none";
-    }
-  });
-});
-
 // Modal card footers open from radio input
 const btnsRadio = document.querySelectorAll(".modal__radio__input");
 const modalItem = document.querySelectorAll(".modal__card");
-const modalCards = document.querySelectorAll('input[name="choice"]');
 
 function removeClass() {
   for (const item of modalItem) {
-    modalItem.checked = false;
     item.classList.remove("modal__card-checked");
   }
 }
 
-modalItem.forEach((item) => {
-  item.addEventListener("click", () => {
-    for (const modalCard of modalCards) {
-      if (modalCard.checked) {
-        removeClass();
-        item.classList.add("modal__card-checked");
-        modalCardFooters.style = "display: block";
-      }
-    }
-  });
-});
+modalItem.forEach((item, index) => {
+  if (!item.classList.contains("disabled_item")) {
+    item.addEventListener("click", () => {
+      btnsRadio[index].checked = true;
+      removeClass();
+      item.classList.add("modal__card-checked");
 
-btnsRadio.forEach((btnRadio) => {
-  btnRadio.addEventListener("click", () => {
-    if (btnRadio === btnsRadio[0]) {
-      modalCardFooters[0].style = "display: block";
-      modalCardFooters[1].style = "display: none";
-      modalCardFooters[2].style = "display: none";
-    } else if (btnRadio === btnsRadio[1]) {
-      modalCardFooters[0].style = "display: none";
-      modalCardFooters[1].style = "display: block";
-      modalCardFooters[2].style = "display: none";
-    } else if (btnRadio === btnsRadio[2]) {
-      modalCardFooters[0].style = "display: none";
-      modalCardFooters[1].style = "display: none";
-      modalCardFooters[2].style = "display: block";
-    } else {
-      modalCardFooters[0].style = "display: none";
-      modalCardFooters[1].style = "display: none";
-      modalCardFooters[2].style = "display: none";
-    }
-  });
+      if (item === modalItem[0]) {
+        modalCardFooters[0].style = "display: block";
+        modalCardFooters[1].style = "display: none";
+        modalCardFooters[2].style = "display: none";
+        modalCardFooters[3].style = "display: none";
+      } else if (item === modalItem[1]) {
+        modalCardFooters[0].style = "display: none";
+        modalCardFooters[1].style = "display: block";
+        modalCardFooters[2].style = "display: none";
+        modalCardFooters[3].style = "display: none";
+      } else if (item === modalItem[2]) {
+        modalCardFooters[0].style = "display: none";
+        modalCardFooters[1].style = "display: none";
+        modalCardFooters[2].style = "display: block";
+        modalCardFooters[3].style = "display: none";
+      } else if (item === modalItem[3]) {
+        modalCardFooters[0].style = "display: none";
+        modalCardFooters[1].style = "display: none";
+        modalCardFooters[2].style = "display: none";
+        modalCardFooters[3].style = "display: block";
+      }
+    });
+  }
 });
 
 const goal = 100000;
@@ -157,7 +126,7 @@ const modalPledges = document.querySelectorAll(
 const aboutCard = document.querySelectorAll(".about__card");
 const btnsModalCard = document.querySelectorAll(".modal__card__btn");
 
-btnsModalCard.forEach((btnModalCard) => {
+btnsModalCard.forEach((btnModalCard, index) => {
   btnModalCard.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -172,9 +141,29 @@ btnsModalCard.forEach((btnModalCard) => {
     const backedPercentage = Math.floor((backedPercent / goal) * 100);
     progressBar.style.width = `${backedPercentage}%`;
 
+    if (!index == 0) {
+      pledges[index - 1].textContent = pledges[index - 1].textContent - 1;
+      modalPledges[index - 1].textContent =
+        modalPledges[index - 1].textContent - 1;
+    }
+
+    removeClass();
+    pledgeCheck();
     closeModal();
     modalCompleted.style = "display: block";
     overlay.classList.toggle("hidden");
+  });
+});
+
+// Input number validation
+const pledgeInput = document.querySelectorAll(".modal__card__footer__input");
+
+pledgeInput.forEach((field) => {
+  field.addEventListener("keyup", () => {
+    if (+field.value >= +field.max) {
+      alert(`Please enter a value between ${+field.min} and ${+field.max}.`);
+      field.value = field.defaultValue;
+    }
   });
 });
 
@@ -196,7 +185,14 @@ pledgeCheck();
 
 const closeModalComplete = function () {
   modalCompleted.style = "display: none";
-  overlay.classList.toggle("hidden");
+  overlay.classList.add("hidden");
 };
 
 btnModalCompleted.addEventListener("click", closeModalComplete);
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !navMenu.classList.contains("hidden")) {
+    closeMenu();
+    closeModalComplete();
+  }
+});
