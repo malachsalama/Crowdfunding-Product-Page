@@ -42,5 +42,5 @@ Overall, it was a great challenge and along the way I learnt a couple of things.
 ### Pending tasks
  - Input validation only exists for max value, for min value it simply doesn't let user enter below certain value without helping the user understand why thats the case.
  - Change disabled button innerText to 'Out of stock' dynamically once the stands are out of stock, i.e below 0.
- - A fill color for the bookmark svg to distinguish its bookmarked state from its normal state.
+ - A fill color for the bookmark svg to distinguish whether or not the product is bookmarked
  - Dynamically update days left.
