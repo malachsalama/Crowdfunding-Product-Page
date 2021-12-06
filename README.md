@@ -31,7 +31,7 @@ Your users should be able to:
 The CSS was fairly straightfoward and enjoyble. The modal required a little bit of work especially the modal states for checked items. The real struggle and timesuck for this challenge for me was the javascript for the buttons, input elements, managing the state of the numbers displayed on the homepage and the progress bar.
 
 Overall, it was a great challenge and along the way I learnt a couple of things. I'll share a few:
-- Always wrap <input> field in a <form> even if there isn't a submit button. It just gets easier to work with the input element for field and form validation.
+- Always wrap `<input>` field in a `<form>` even if there isn't a submit button. It just gets easier to work with the input element for field and form validation.
 
 - If there are multiple items that will change, make sure their corresponding identical items are sharing the same class. Do not add a id to them, makes things really hard later on.
 
